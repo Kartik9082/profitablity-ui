@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { IoSpeedometerOutline } from "react-icons/io5";
 import { GrCycle } from "react-icons/gr";
@@ -11,6 +11,12 @@ import { SiSimpleanalytics } from "react-icons/si";
 import { BsCurrencyDollar } from "react-icons/bs";
 
 const Sidebar = () => {
+  const [active, setActive] = useState("Profitability");
+
+  const handleClick = (link) => {
+    setActive(link);
+  };
+
   return (
     <div className="sidebar">
       <div className="upper-content">
@@ -34,29 +40,53 @@ const Sidebar = () => {
       <div className="lower-content">
         <p className="content-menu">Content Menu</p>
         <ul>
-          <li>
+          <li
+            className={active === "ScoreCard" ? "active" : ""}
+            onClick={() => handleClick("ScoreCard")}
+          >
             <IoSpeedometerOutline /> ScoreCard
           </li>
-          <li>
+          <li
+            className={active === "Business Life Cycle" ? "active" : ""}
+            onClick={() => handleClick("Business Life Cycle")}
+          >
             <GrCycle /> Business Life Cycle
           </li>
-          <li>
+          <li
+            className={active === "Market Capital Growth" ? "active" : ""}
+            onClick={() => handleClick("Market Capital Growth")}
+          >
             <GrLineChart /> Market Capital Growth
           </li>
-          <li>
+          <li
+            className={active === "Valuation" ? "active" : ""}
+            onClick={() => handleClick("Valuation")}
+          >
             <MdOutlineContentPasteSearch /> Valuation
           </li>
-          <li>
+          <li
+            className={active === "Capital Structure" ? "active" : ""}
+            onClick={() => handleClick("Capital Structure")}
+          >
             <MdBalance /> Capital Structure
           </li>
-          <li>
+          <li
+            className={active === "Operational Metrices" ? "active" : ""}
+            onClick={() => handleClick("Operational Metrices")}
+          >
             <TbAnalyze /> Operational Metrices
           </li>
-          <li>
+          <li
+            className={active === "Profitability" ? "active" : ""}
+            onClick={() => handleClick("Profitability")}
+          >
             <BsCurrencyDollar />
             <SiSimpleanalytics /> Profitability
           </li>
-          <li>
+          <li
+            className={active === "Cash Flow" ? "active" : ""}
+            onClick={() => handleClick("Cash Flow")}
+          >
             <FaSackDollar /> Cash Flow
           </li>
         </ul>

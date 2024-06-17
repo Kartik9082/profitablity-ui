@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoChevronBackSharp } from "react-icons/io5";
 import { IoChevronForwardSharp } from "react-icons/io5";
+import { BsTable } from "react-icons/bs";
+import { IoBarChart } from "react-icons/io5";
 
 const Body = () => {
+  const [activeLink, setActiveLink] = useState("Total Revenues");
+  const [years, setYears] = useState("All");
+
+  const handleClick = (link) => {
+    setActiveLink(link);
+  };
+
   return (
     <div className="body-content">
       <div className="nav-container">
@@ -10,37 +19,72 @@ const Body = () => {
           <button className="btn-back">
             <IoChevronBackSharp />
           </button>
-          <p>Total Revenues</p>
-          <p>Cost of sales %</p>
-          <p>Expenses %</p>
-          <p>EBIT %</p>
+          <p
+            className={`menu-links ${
+              activeLink === "Total Revenues" ? "active" : ""
+            }`}
+            onClick={() => handleClick("Total Revenues")}
+          >
+            Total Revenues
+          </p>
+          <p
+            className={`menu-links ${
+              activeLink === "Cost of sales %" ? "active" : ""
+            }`}
+            onClick={() => handleClick("Cost of sales %")}
+          >
+            Cost of sales %
+          </p>
+          <p
+            className={`menu-links ${
+              activeLink === "Expenses %" ? "active" : ""
+            }`}
+            onClick={() => handleClick("Expenses %")}
+          >
+            Expenses %
+          </p>
+          <p
+            className={`menu-links ${activeLink === "EBIT %" ? "active" : ""}`}
+            onClick={() => handleClick("EBIT %")}
+          >
+            EBIT %
+          </p>
           <button className="btn-forward">
             <IoChevronForwardSharp />
-          </button>{" "}
+          </button>
         </div>
         <div className="nav-menu-dropdown">
-          <div className="dropdown-flex">
+          <div className="dropdown-year">
             <label>Years</label>
-            <select>
-              <option>2020</option>
-              <option>2019</option>
-              <option>2018</option>
-              <option>2017</option>
-              <option>2016</option>
-              <option>2015</option>
-              <option>2014</option>
-              <option>2013</option>
-              <option>2012</option>
-              <option>2011</option>
-              <option>2010</option>
-              <option>2009</option>
-              <option>2008</option>
-              <option>2007</option>
-              <option>2006</option>
-              <option>2005</option>
-              <option>2004</option>
-              <option>2003</option>
+            <select
+              id="years"
+              value={years}
+              onChange={(e) => setYears(e.target.value)}
+            >
+              <option value="All">All</option>
+              <option value="2000">2000</option>
+              <option value="1999">1999</option>
+              <option value="1998">1998</option>
+              <option value="1997">1997</option>
+              <option value="1996">1996</option>
+              <option value="1995">1995</option>
+              <option value="1994">1994</option>
+              <option value="1993">1993</option>
+              <option value="1992">1992</option>
+              <option value="1991">1991</option>
             </select>
+          </div>
+          <div className="table-navigation">
+            <label style={{ visibility: "hidden" }}>hidden</label>
+            <div className="table-navigation-item">
+              <button className="btn-forward">
+                <BsTable />{" "}
+              </button>
+              <button className="btn-forward">
+                {" "}
+                <IoBarChart />{" "}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -63,7 +107,12 @@ const Body = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr
+              style={{
+                backgroundColor: "#0F9FFC",
+                color: "white",
+              }}
+            >
               <td>Primary Company</td>
               <td>Nvidia</td>
               <td>0.02</td>
@@ -78,8 +127,10 @@ const Body = () => {
               <td>0.02</td>
             </tr>
             <tr>
-              <td rowSpan={4}>Suppliers</td>
-              <td>Company Name</td>
+              <td className="td-color" rowSpan={4}>
+                Suppliers
+              </td>
+              <td className="row-color">Company Name</td>
               <td>0.02</td>
               <td>0.02</td>
               <td>0.02</td>
@@ -92,7 +143,7 @@ const Body = () => {
               <td>0.02</td>
             </tr>
             <tr>
-              <td>Company Name</td>
+              <td className="row-color">Company Name</td>
               <td>0.02</td>
               <td>0.02</td>
               <td>0.02</td>
@@ -105,7 +156,7 @@ const Body = () => {
               <td>0.02</td>
             </tr>
             <tr>
-              <td>Company Name</td>
+              <td className="row-color">Company Name</td>
               <td>0.02</td>
               <td>0.02</td>
               <td>0.02</td>
@@ -117,61 +168,8 @@ const Body = () => {
               <td>0.02</td>
               <td>0.02</td>
             </tr>
-            <tr>
-              <td>Median</td>
-              <td>0.05</td>
-              <td>0.05</td>
-              <td>0.05</td>
-              <td>0.05</td>
-              <td>0.05</td>
-              <td>0.05</td>
-              <td>0.05</td>
-              <td>0.05</td>
-              <td>0.05</td>
-              <td>0.05</td>
-            </tr>
-            <tr>
-              <td rowSpan={4}>Competitors</td>
-              <td>Company Name</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-            </tr>
-            <tr>
-              <td>Company Name</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-            </tr>
-            <tr>
-              <td>Company Name</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-              <td>0.02</td>
-            </tr>
-            <tr>
-              <td>Median</td>
+            <tr className="tr-style">
+              <td className="row-color">Median</td>
               <td>0.05</td>
               <td>0.05</td>
               <td>0.05</td>
@@ -184,8 +182,10 @@ const Body = () => {
               <td>0.05</td>
             </tr>
             <tr>
-              <td rowSpan={4}>Customers</td>
-              <td>Company Name</td>
+              <td className="td-color" rowSpan={4}>
+                Competitors
+              </td>
+              <td className="row-color">Company Name</td>
               <td>0.02</td>
               <td>0.02</td>
               <td>0.02</td>
@@ -198,7 +198,7 @@ const Body = () => {
               <td>0.02</td>
             </tr>
             <tr>
-              <td>Company Name</td>
+              <td className="row-color">Company Name</td>
               <td>0.02</td>
               <td>0.02</td>
               <td>0.02</td>
@@ -211,7 +211,36 @@ const Body = () => {
               <td>0.02</td>
             </tr>
             <tr>
-              <td>Company Name</td>
+              <td className="row-color">Company Name</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+            </tr>
+            <tr className="tr-style">
+              <td className="row-color">Median</td>
+              <td>0.05</td>
+              <td>0.05</td>
+              <td>0.05</td>
+              <td>0.05</td>
+              <td>0.05</td>
+              <td>0.05</td>
+              <td>0.05</td>
+              <td>0.05</td>
+              <td>0.05</td>
+              <td>0.05</td>
+            </tr>
+            <tr>
+              <td className="td-color" rowSpan={4}>
+                Customers
+              </td>
+              <td className="row-color">Company Name</td>
               <td>0.02</td>
               <td>0.02</td>
               <td>0.02</td>
@@ -224,7 +253,33 @@ const Body = () => {
               <td>0.02</td>
             </tr>
             <tr>
-              <td>Median</td>
+              <td className="row-color">Company Name</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+            </tr>
+            <tr>
+              <td className="row-color">Company Name</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+              <td>0.02</td>
+            </tr>
+            <tr className="tr-style">
+              <td className="row-color">Median</td>
               <td>0.05</td>
               <td>0.05</td>
               <td>0.05</td>

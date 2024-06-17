@@ -69,6 +69,31 @@ ul li {
   list-style: none;
   padding: 10px;
 }
+.content-menu {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.lower-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.lower-content li {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.lower-content li.active {
+  background-color: #e0f3ff;
+  color: #0f95fc; /* Active link text color */
+}
+
+.lower-content li:not(.active):hover {
+  background-color: #e0f3ff; /* Hover effect for non-active links */
+}
 
 .upper-content p {
   margin-top: 10px;
@@ -106,19 +131,6 @@ ul li {
   margin-top: 20px;
 }
 
-.lower-content ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.lower-content li {
-  color: #808080;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .back-btn {
   width: 30px;
   height: 30px;
@@ -144,7 +156,8 @@ ul li {
 }
 .btn-forward {
   width: 30px;
-  height: 30px;
+  height: 25px;
+
   border-radius: 4px;
   border: none;
   background: #fff;
@@ -169,6 +182,16 @@ ul li {
   display: flex;
   flex-direction: column;
 }
+.dropdown-year {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-year select {
+  width: 80px;
+  margin-top: 0;
+}
+
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -185,12 +208,37 @@ ul li {
   gap: 15px;
   margin: 4px;
   padding-left: 10px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
 }
 
-.table-container {
-  /* margin-top: 10px; */
+.menu-links {
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.menu-links.active {
+  color: black;
+  border-bottom: 2px solid #0f95fc;
+  padding-bottom: 2px;
+}
+
+.nav-menu-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-navigation {
+  display: flex;
+  flex-direction: column;
+}
+.table-navigation-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding-left: 5px;
 }
 
 table {
@@ -200,10 +248,13 @@ table {
 thead > tr > th {
   background-color: #b2ddfe;
 }
+/* tbody > tr > td {
+  background-color: #b2ddfe;
+} */
 
 th,
 td {
-  border: 1px solid #ccc;
+  border: 1px solid white;
   margin: 2px;
   padding: 8px;
   text-align: left;
@@ -211,4 +262,18 @@ td {
 
 th {
   background-color: #f4f4f4;
+}
+
+.row-color {
+  background-color: #e5f3fe;
+}
+
+.td-color {
+  background-color: #b2ddfe;
+  border-bottom: 2px white solid;
+}
+
+.tr-style {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
