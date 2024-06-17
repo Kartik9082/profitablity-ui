@@ -24,6 +24,10 @@
   align-items: flex-start;
 }
 
+.benchmark {
+  padding-left: 25px;
+}
+
 /*  */
 
 .header {

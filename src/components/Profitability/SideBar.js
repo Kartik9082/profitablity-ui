@@ -26,7 +26,7 @@ const Sidebar = () => {
               <IoArrowBack />
             </button>
           </div>
-          <div>
+          <div className="benchmark">
             <h1>Benchmark</h1>
           </div>
         </div>
